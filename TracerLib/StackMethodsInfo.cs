@@ -19,6 +19,7 @@ namespace TracerLib
 
         public MethodInfo MethodInfo { get => methodInfo; set => methodInfo = value; }
         public DateTime StartTime { get => startTime;}
+        public MethodBase MethodBase { get => methodBase;  }
     }
 
     

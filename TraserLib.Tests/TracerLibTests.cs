@@ -111,6 +111,12 @@ namespace TraserLib.Tests
             Assert.AreEqual(expected, actual);
         }
 
-
+        [TestMethod]
+        public void GetTraceResult_NoStart_TraceException()
+        {
+            Assert.ThrowsException<TraceException>(tracer.StopTrace);
+        }
     }
+
+    
 }

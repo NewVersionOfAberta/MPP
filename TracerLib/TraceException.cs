@@ -4,7 +4,12 @@ using System.Text;
 
 namespace TracerLib
 {
-    class TraceExeption
+    public class TraceException : Exception
     {
+        
+
+        public TraceException(string message)
+        : base(message)
+        { }
     }
 }

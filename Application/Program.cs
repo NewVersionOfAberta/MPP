@@ -28,33 +28,23 @@ namespace Application
         {
 
 
-            //Thread myThread = new Thread(new ThreadStart(Count));
-            //myThread.Start();
+            Thread myThread = new Thread(new ThreadStart(Count));
+            myThread.Start();
 
-            //Cool cool = new Cool(tracer);
-            //cool.Long();
-            //TraceResult traceResult = tracer.GetTraceResult();
-
-            var thread = new Thread(new ThreadStart(() =>
-            {
-                tracer.StartTrace();
-                Thread.Sleep(10);
-                tracer.StopTrace();
-            }));
-
-            thread.Start();
-
-            tracer.StartTrace();
-            Thread.Sleep(10);
-            tracer.StopTrace();
-
+            Cool cool = new Cool(tracer);
+            cool.Long();
             TraceResult traceResult = tracer.GetTraceResult();
+
+            Seeker seeker = new Seeker(tracer);
+            seeker.StartTest();
 
             var xMLSerializer = new XMLSerializer();
             var writer = new Writer();
-            writer.ToWrite(xMLSerializer.Serialize(traceResult), new StreamWriter(DEF_FILE_NAME));
+            string xml = xMLSerializer.Serialize(traceResult);
+            writer.ToWrite(xml, new StreamWriter(DEF_FILE_NAME));
             var jSONSerializer = new JSONSerializer();
             writer.ToWrite(jSONSerializer.Serialize(traceResult), Console.Out);
+            writer.ToWrite(xml, Console.Out);
             Console.ReadKey();
         }
     }

@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application.csproj", "{B5F58091-A91A-4000-A9CC-B0DA868A13FA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TracerLib", "..\TracerLib\TracerLib.csproj", "{B4C6237E-C2A3-4491-B6B8-7191275D56DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraserLib.Tests", "..\TraserLib.Tests\TraserLib.Tests.csproj", "{03102E84-C127-4D12-A5AA-CC303691D08A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B5F58091-A91A-4000-A9CC-B0DA868A13FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5F58091-A91A-4000-A9CC-B0DA868A13FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5F58091-A91A-4000-A9CC-B0DA868A13FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C6237E-C2A3-4491-B6B8-7191275D56DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C6237E-C2A3-4491-B6B8-7191275D56DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C6237E-C2A3-4491-B6B8-7191275D56DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C6237E-C2A3-4491-B6B8-7191275D56DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03102E84-C127-4D12-A5AA-CC303691D08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03102E84-C127-4D12-A5AA-CC303691D08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03102E84-C127-4D12-A5AA-CC303691D08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03102E84-C127-4D12-A5AA-CC303691D08A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
