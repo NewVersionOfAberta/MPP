@@ -26,14 +26,30 @@ namespace Application
 
         static void Main(string[] args)
         {
-            
-            
-            Thread myThread = new Thread(new ThreadStart(Count));
-            myThread.Start();
 
-            Cool cool = new Cool(tracer);
-            cool.Long();
+
+            //Thread myThread = new Thread(new ThreadStart(Count));
+            //myThread.Start();
+
+            //Cool cool = new Cool(tracer);
+            //cool.Long();
+            //TraceResult traceResult = tracer.GetTraceResult();
+
+            var thread = new Thread(new ThreadStart(() =>
+            {
+                tracer.StartTrace();
+                Thread.Sleep(10);
+                tracer.StopTrace();
+            }));
+
+            thread.Start();
+
+            tracer.StartTrace();
+            Thread.Sleep(10);
+            tracer.StopTrace();
+
             TraceResult traceResult = tracer.GetTraceResult();
+
             var xMLSerializer = new XMLSerializer();
             var writer = new Writer();
             writer.ToWrite(xMLSerializer.Serialize(traceResult), new StreamWriter(DEF_FILE_NAME));
