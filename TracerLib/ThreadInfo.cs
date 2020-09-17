@@ -7,8 +7,10 @@ namespace TracerLib
     public class ThreadInfo
     {
         public int Id { get; set; }
-        public string Time { get; set; }
+        public double Time { get; set; }
         List<MethodInfo> methods = new List<MethodInfo>();
+
+        public ThreadInfo() { }
 
         public ThreadInfo(int id)
         {

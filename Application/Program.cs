@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TracerLib;
 
@@ -9,15 +11,41 @@ namespace Application
 {
     class Program
     {
+        const string DEF_FILE_NAME = "serialize.txt";
+
+        static Tracer tracer = new Tracer();
+
+
+        public static void Count()
+        {
+            Cool cool = new Cool(tracer);
+            cool.Long();
+            TraceResult traceResult = tracer.GetTraceResult();
+           
+        }
+
         static void Main(string[] args)
         {
-            Tracer tracer = new Tracer();
-            Cool cool = new Cool(tracer);
-            cool.Fast();
-            TraceResult traceResult = tracer.GetTraceResult();
-            Serializer serializer = new Serializer();
-            serializer.ToJSON(traceResult);
 
+
+            Thread myThread = new Thread(new ThreadStart(Count));
+            myThread.Start();
+
+            Cool cool = new Cool(tracer);
+            cool.Long();
+            TraceResult traceResult = tracer.GetTraceResult();
+
+            Seeker seeker = new Seeker(tracer);
+            seeker.StartTest();
+
+            var xMLSerializer = new XMLSerializer();
+            var writer = new Writer();
+            string xml = xMLSerializer.Serialize(traceResult);
+            writer.ToWrite(xml, new StreamWriter(DEF_FILE_NAME));
+            var jSONSerializer = new JSONSerializer();
+            writer.ToWrite(jSONSerializer.Serialize(traceResult), Console.Out);
+            writer.ToWrite(xml, Console.Out);
+            Console.ReadKey();
         }
     }
 }
