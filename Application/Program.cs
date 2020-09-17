@@ -12,6 +12,7 @@ namespace Application
     class Program
     {
         const string DEF_FILE_NAME = "serialize.txt";
+        const string DEF_FILE_NAME_JSON = "json_serialize.txt";
 
         static Tracer tracer = new Tracer();
 
@@ -27,7 +28,6 @@ namespace Application
         static void Main(string[] args)
         {
 
-
             Thread myThread = new Thread(new ThreadStart(Count));
             myThread.Start();
 
@@ -39,12 +39,19 @@ namespace Application
             seeker.StartTest();
 
             var xMLSerializer = new XMLSerializer();
-            var writer = new Writer();
-            string xml = xMLSerializer.Serialize(traceResult);
-            writer.ToWrite(xml, new StreamWriter(DEF_FILE_NAME));
             var jSONSerializer = new JSONSerializer();
-            writer.ToWrite(jSONSerializer.Serialize(traceResult), Console.Out);
+
+            var writer = new Writer();
+
+            string xml = xMLSerializer.Serialize(traceResult);
+            string json = jSONSerializer.Serialize(traceResult);
+            
+            writer.ToWrite(xml, new StreamWriter(DEF_FILE_NAME));
+            writer.ToWrite(json, new StreamWriter(DEF_FILE_NAME_JSON));
+
+            writer.ToWrite(json, Console.Out);
             writer.ToWrite(xml, Console.Out);
+
             Console.ReadKey();
         }
     }
