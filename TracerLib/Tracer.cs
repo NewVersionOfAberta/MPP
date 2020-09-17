@@ -20,12 +20,12 @@ namespace TracerLib
             
             foreach (ThreadInfo threadInfo in threadInfos)
             {
-                TimeSpan totalTime = new TimeSpan(0);
+                double totalTime = 0;
                 foreach (MethodInfo methodInfo in threadInfo.Methods)
                 {
                     totalTime += methodInfo.Time;
                 }
-                threadInfo.Time = totalTime.TotalSeconds.ToString() + "s";
+                threadInfo.Time = totalTime;
             }
 
             return new TraceResult(threadInfos);
@@ -114,7 +114,7 @@ namespace TracerLib
             {
                 StackMethodsInfo stackMethodsInfo = stackMethods.Pop();
 
-                stackMethodsInfo.MethodInfo.Time = time - stackMethodsInfo.StartTime;
+                stackMethodsInfo.MethodInfo.Time = (time - stackMethodsInfo.StartTime).TotalMilliseconds;
 
             }
             

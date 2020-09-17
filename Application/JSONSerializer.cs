@@ -3,27 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
+using TracerLib;
 
 namespace Application
 {
-    class Serializer
+    class JSONSerializer : ISerializer
     {
-
-
-        public void ToJSON(Object obj)
+        public string Serialize(TraceResult traceResult)
         {
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
+                IgnoreNullValues = true
             };
-            string jsonString;
-            //TextWriter textWriter = new StringWriter();
-            jsonString = JsonSerializer.Serialize(obj, options);
-            Console.Write(jsonString);
-            Console.ReadLine();
+            
+            return JsonSerializer.Serialize(traceResult, options);
+           
         }
 
     }

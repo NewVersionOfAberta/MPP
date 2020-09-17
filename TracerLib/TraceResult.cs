@@ -6,13 +6,15 @@ namespace TracerLib
 {
     public class TraceResult
     {
-        private readonly List<ThreadInfo> ts;
+        private readonly List<ThreadInfo> threads;
 
-        public TraceResult(List<ThreadInfo> ts)
+        public TraceResult() { }
+
+        public TraceResult(List<ThreadInfo> threads)
         {
-            this.ts = ts;
+            this.threads = threads;
         }
 
-        public List<ThreadInfo> Ts => ts;
+        public List<ThreadInfo> Threads => threads;
     }
 }
