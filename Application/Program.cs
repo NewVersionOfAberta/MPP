@@ -35,6 +35,8 @@ namespace Application
             cool.Long();
             TraceResult traceResult = tracer.GetTraceResult();
 
+            //traceResult = tracer.GetTraceResult();
+
             Seeker seeker = new Seeker(tracer);
             seeker.StartTest();
 
